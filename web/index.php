@@ -6,6 +6,7 @@ var_dump($request);
 $doc = preg_replace('/[^a-z0-9_]+/i','', array_shift($request));
 
    list($name,$value) = explode('=',$tmpVar);
+	echo list;
    $$name = $value;
 	echo $$name;
 
