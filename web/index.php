@@ -5,8 +5,10 @@ var_dump($method);
 var_dump($request);
 $doc = preg_replace('/[^a-z0-9_]+/i','', array_shift($request));
 
-	$data= explode('=', $request);
+	foreach($request as $stuff)
+	{ 
+		$data= explode('=', $stuff);
 	var_dump($data);
-
+	}
 ?>
 
