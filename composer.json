@@ -1,8 +1,5 @@
 {
-  "require" : {
-	"ext-mongo": "*"
-  },
-  "require-dev": {
-    "heroku/heroku-buildpack-php": "*"
-  }
+    "require": {
+        "mongodb/mongodb": "^1.0.0"
+    }
 }
