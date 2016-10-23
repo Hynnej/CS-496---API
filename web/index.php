@@ -12,7 +12,7 @@ if($method == "GET")
 		echo $name[0] . " " . $name[1];
 	}
 	
-	if($doc == "player")
+	
 }
 
 
