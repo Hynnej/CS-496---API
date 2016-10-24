@@ -25,7 +25,7 @@
 				$teaminfo = $teams->find();
 			var_dump($teaminfo);
 
-	if($method == "GET")
+	/*if($method == "GET")
 	{
 		if($doc == "team")
 		{	
@@ -48,7 +48,7 @@
 		
 		else
 			echo "you must specify a correct collection."
-	}
+	}*/
 	
 /*	else if($method == "POST")
 	{
