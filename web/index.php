@@ -146,7 +146,7 @@
 			echo "you must specify a correct collection.";	
 	}	
 	
-	else if($method == "DELETE")
+	/*else if($method == "DELETE")
 	{		
 		if($doc == "team")
 		{
@@ -204,7 +204,7 @@
 	
 
 	else
-		echo "method is not supported.";
+		echo "method is not supported.";*/
 ?>
 
 
