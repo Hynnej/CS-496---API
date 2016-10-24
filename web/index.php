@@ -25,7 +25,7 @@
 				//$teaminfo = $teams->find();
 			//var_dump($teaminfo);
 
-	if($method == "GET")
+	/*if($method == "GET")
 	{
 		if($doc == "team")
 		{	
@@ -37,18 +37,18 @@
 			//echo json_encode($teamInfo);
 		}
 		
-		/*else if($doc == "player")
+		else if($doc == "player")
 		{
 			$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
 			$retPlayer = $teams->findOne($query);	
 			$teamInfo = ['id' => retPlayer['id'], 'fname' => retPlayer['fname'], 'lname' => retPlayer['lname'], 'position' => retPlayer['position'], 'team' => retPlayer['team']]; 
 			header('Content-type: application/json');
 			echo json_encode($data);
-		}*/
+		}
 		
 		else
 			echo "you must specify a correct collection."
-	}
+	}*/
 	
 /*	else if($method == "POST")
 	{
