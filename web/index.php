@@ -22,14 +22,14 @@
 	$data = array_combine($key, $value);
 	
 
-	
+				$teaminfo = $teams->find();
+			var_dump($teaminfo);
 
 	if($method == "GET")
 	{
 		if($doc == "team")
 		{	
-			$teaminfo = $teams->find();
-			var_dump($teaminfo);
+
 			//$query = array('name' => 'seattle_seahawks');
 			//$retTeam = $teams->findOne($query);	
 			//$teamInfo = ['id' => retTeam['id'], 'name' => retTeam['name'], 'division' => retTeam['division']]; 
