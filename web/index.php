@@ -22,15 +22,17 @@
 	$teams = $db->team;
 	$players = $db->player;
 	
-	if($method == "GET")
+	header('Content-type: application/json');
+	echo json_encode($data);
+	/*if($method == "GET")
 	{
 		if($doc == "team")
 		{	
 			$query = array('name' => 'seatthe_seahawks');
 			$retTeam = $teams->findOne($query);	
 			$teamInfo = ['id' => retTeam['id'], 'name' => retTeam['name'], 'division' => retTeam['division']]; 
-			header('Content-type: application/json');
-			echo json_encode($data);
+			//header('Content-type: application/json');
+			//echo json_encode($data);
 		}
 		
 		/*else if($doc == "player")
@@ -40,11 +42,11 @@
 			$teamInfo = ['id' => retPlayer['id'], 'fname' => retPlayer['fname'], 'lname' => retPlayer['lname'], 'position' => retPlayer['position'], 'team' => retPlayer['team']]; 
 			header('Content-type: application/json');
 			echo json_encode($data);
-		}*/
+		}
 		
 		else
 			echo "you must specify a correct collection."
-	}
+	}*/
 	
 /*	else if($method == "POST")
 	{
