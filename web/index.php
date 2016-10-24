@@ -156,7 +156,7 @@
 
 				if($delPlayer)
 				{
-					$players->removeOne($delPlayer);
+					$players->deleteOne($delPlayer);
 					echo "Player was deleted";
 				}	
 				//error message if player name was not found
