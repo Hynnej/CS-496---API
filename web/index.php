@@ -30,7 +30,7 @@
 
 			//$teaminfo = $teams->find();
 			//var_dump($teaminfo);
-			$query = array('name' => 'seattle_seahawks');
+			$query = array('name' => $data['name']);
 			$retTeam = $teams->findOne($query);	
 			//$teamInfo = ['id' => retTeam['id'], 'name' => retTeam['name'], 'division' => retTeam['division']]; 
 			header('Content-type: application/json');
