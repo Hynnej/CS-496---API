@@ -3,9 +3,9 @@
 	//connects to mongodb hosted at mlabs
  	$uri = "mongodb://sirmiq:door5454@ds048319.mlab.com:48319/sports";
 	$client = new MongoDB\Client($uri);
-	phpinfo();
-	//$db = $client->sports;
-	//$teams = $db->team;
+
+	$db = $client->sports;
+	$teams = $db->team;
 
 	/*$method = $_SERVER['REQUEST_METHOD'];
 	$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
