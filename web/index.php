@@ -202,10 +202,7 @@
 		
 	}			
 	
-	else if($method == "PUT")
-	{
-		
-	}
+
 	else
 		echo "method is not supported.";
 ?>
