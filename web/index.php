@@ -52,9 +52,7 @@
 			if($data['fname'] && $data['lname'])
 			{
 				$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
-				$retPlayer = $players->findOne($query);	
-				header('Content-type: application/json');
-				echo json_encode($retPlayer);;	
+				$retPlayer = $players->findOne($query);		
 				
 				if($retPlayer)
 				{
