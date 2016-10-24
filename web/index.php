@@ -1,3 +1,5 @@
+
+
 <?php
 	require('../vendor/autoload.php');
 	//connects to mongodb hosted at mlabs
@@ -6,13 +8,10 @@
 	$db = $client->playerteam;
 	$teams = $db->team;
 	$players = $db->player;
-
 	//gathers data sent
 	$method = $_SERVER['REQUEST_METHOD'];
 	$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
-
 	$doc = preg_replace('/[^a-z0-9_]+/i','', array_shift($request));
-
 	//parses the strings to form keys and values
 	foreach($request as $stuff)
 	{ 
@@ -23,7 +22,6 @@
 	
 	//combines keys and arrays into single array
 	$data = array_combine($key, $value);
-
 	//proccesses the get requests
 	if($method == "GET")
 	{
@@ -39,22 +37,41 @@
 					header('Content-type: application/json');
 					echo json_encode($retTeam);
 				}	
-				
+				//error message if team name was not found
 				else
 					echo "No team with that name was found";
 			}
 			
+			//error message if no team name was given
 			else
 				echo "no team name was given.";
 		}
 		
 		else if($doc == "player")
-		{
-			$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
-			$retPlayer = $players->findOne($query);	
-			header('Content-type: application/json');
-			echo json_encode($retPlayer);
+		{	
+			if($data['fname'] && $data['lname'])
+			{
+				$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
+				$retPlayer = $players->findOne($query);	
+				header('Content-type: application/json');
+				echo json_encode($retPlayer);;	
+				
+				if($retPlayer)
+				{
+					header('Content-type: application/json');
+					echo json_encode($retPlayer);
+				}	
+				//error message if player name was not found
+				else
+					echo "No player with that name was found";
+			}
+			
+			//error message if no player name was given
+			else
+				echo "no player name was given.";
 		}
+
+
 		
 		else
 			echo "you must specify a correct collection.";
@@ -94,4 +111,3 @@
 	
 	
 ?>
-
