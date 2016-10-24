@@ -5,7 +5,7 @@
 	$client = new MongoClient($uri);
 	$db = $client->selectDB("playerteam");
 	$teams = $db->team;
-	$players = $db->team;
+	$players = $db->player;
 		
 
 	$method = $_SERVER['REQUEST_METHOD'];
@@ -34,17 +34,20 @@
 			echo json_encode($data);
 		}
 		
-		if($doc == "player")
+		else if($doc == "player")
 		{
 			$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
 			$retPlayer = $teams->findOne($query);	
 			$teamInfo = ['id' => retPlayer['id'], 'fname' => retPlayer['fname'], 'lname' => retPlayer['lname'], 'position' => retPlayer['position'], 'team' => retPlayer['team']]; 
 			header('Content-type: application/json');
 			echo json_encode($data);
-		}	
+		}
+		
+		else
+			echo "you must specify a correct collection."
 	}
 	
-	if($method == "POST")
+/*	else if($method == "POST")
 	{
 		if($doc == "team")
 		{
@@ -74,7 +77,7 @@
 				
 		}	
 	}
-	
+	echo "hello";*/
 
 
 ?>
