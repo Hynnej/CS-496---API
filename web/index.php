@@ -3,7 +3,7 @@
 
 	//connects to mongodb hosted at mlabs
 	$uri = "mongodb://sirmiq:door5454@ds048719.mlab.com:48719/playerteam";
-	$client = new MongoClient($MONGODB_URI);
+	$client = new Mongo($uri);
 	$db = $client->selectDB("playerteam");
 	$teams = $db->team;
 	$players = $db->player;
