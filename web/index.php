@@ -1,11 +1,11 @@
 <?php
 	require('../vendor/autoload.php');
 	//connects to mongodb hosted at mlabs
- 		$uri = "mongodb://sirmiq:door5454@ds048719.mlab.com:48719/playerteams";
+ 	$uri = "mongodb://sirmiq:door5454@ds048319.mlab.com:48319/sports";
 	$client = new MongoDB\Client($uri);
-	$db = $client->playerteams;
-	//$teams = $db->team;
-	//$players = $db->player;
+	$db = $client->selectDB("sports");
+	$teams = $db->team;
+
 	$method = $_SERVER['REQUEST_METHOD'];
 	$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 	var_dump($method);
