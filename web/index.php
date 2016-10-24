@@ -1,5 +1,3 @@
-
-
 <?php
 	require('../vendor/autoload.php');
 	//connects to mongodb hosted at mlabs
@@ -53,8 +51,6 @@
 			{
 				$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
 				$retPlayer = $players->findOne($query);	
-				header('Content-type: application/json');
-				echo json_encode($retPlayer);;	
 				
 				if($retPlayer)
 				{
@@ -149,5 +145,31 @@
 		}
 	}	
 	
+	else if($method == "DELETE")
+	{
+		if($doc == "player")
+		{
+			if($data['fname'] && $data['lname'])
+			{
+				$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
+				$delPlayer = $players->findOne($query);	
+
+				if($delPlayer)
+				{
+					$players->remove($delPlayer);
+				}	
+				//error message if player name was not found
+				else
+					echo "No player with that name was found";
+			}
+			
+			//error message if no player name was given
+			else
+				echo "no player name was given.";
+		}
+			
+	}			
+	
 	
 ?>
+
