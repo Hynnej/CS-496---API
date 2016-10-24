@@ -22,8 +22,8 @@
 	$data = array_combine($key, $value);
 	
 
-				//$teaminfo = $teams->find();
-			//var_dump($teaminfo);
+				$teaminfo = $teams->find();
+			var_dump($teaminfo);
 
 	/*if($method == "GET")
 	{
