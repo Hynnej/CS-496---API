@@ -130,7 +130,7 @@
 						'team' => $data['team']
 						);
 							
-						$teams->insertOne($addPlayer);
+						$players->insertOne($addPlayer);
 						echo "Player was added";
 					}
 					
@@ -157,6 +157,7 @@
 				if($delPlayer)
 				{
 					$players->remove($delPlayer);
+					echo "Player was deleted";
 				}	
 				//error message if player name was not found
 				else
