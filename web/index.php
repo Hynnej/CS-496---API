@@ -102,7 +102,7 @@
 				
 		}
 		
-		if($doc == "player")
+		else if($doc == "player")
 		{
 			if($data['fname'] && $data['lname'] && $data['position'] && $data['team'])
 			{
@@ -158,6 +158,12 @@
 				if($delTeam)
 				{
 					$teams->deleteOne($delTeam);
+					$query = array('team' => $data['name']);
+					$playTeam = $teams->find($query);
+					foreach($playTeam as $play)
+					{
+						$players->update('team' => 'none');
+					}
 					echo "team was deleted";
 				}
 				//error message if player name was not found
@@ -178,6 +184,7 @@
 				if($delPlayer)
 				{
 					$players->deleteOne($delPlayer);
+					
 					echo "Player was deleted";
 				}	
 				//error message if player name was not found
@@ -195,7 +202,12 @@
 		
 	}			
 	
-	
+	else if($method == "PUT")
+	{
+		
+	}
+	else
+		echo "method is not supported.";
 ?>
 
 
