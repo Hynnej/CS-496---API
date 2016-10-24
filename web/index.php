@@ -34,15 +34,16 @@
 				{
 					header('Content-type: application/json');
 					echo json_encode($retTeam);
+					http_response_code(200);					
 				}	
 				//error message if team name was not found
 				else
-					echo "No team with that name was found";
+					http_response_code(404);
 			}
 			
 			//error message if no team name was given
 			else
-				echo "no team name was given.";
+					http_response_code(404);
 		}
 		
 		else if($doc == "player")
@@ -55,20 +56,22 @@
 				if($retPlayer)
 				{
 					header('Content-type: application/json');
-					echo json_encode($retPlayer);
+					echo json_encode($retPlayer);					
+					http_response_code(200);
+					
 				}	
 				//error message if player name was not found
 				else
-					echo "No player with that name was found";
+					http_response_code(404);
 			}
 			
 			//error message if no player name was given
 			else
-				echo "no player name was given.";
+					http_response_code(404);
 		}
 		
 		else
-			echo "you must specify a correct collection.";
+					http_response_code(404);
 	}
 	
 	//processes post requests
@@ -93,7 +96,7 @@
 					'division' => $data['division']);
 						
 					$teams->insertOne($addTeam);
-					echo "team was added";
+					http_response_code(201);
 				}
 			}
 			
