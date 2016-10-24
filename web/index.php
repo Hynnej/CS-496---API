@@ -5,13 +5,13 @@
 	$client = new MongoDB\Client($uri);
 	$db = $client->playerteam;
 	$teams = $db->team;
-
+	$players = $db->player;
 
 	$method = $_SERVER['REQUEST_METHOD'];
 	$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
-	//var_dump($method);
-	//var_dump($request);
+
 	$doc = preg_replace('/[^a-z0-9_]+/i','', array_shift($request));
+
 	foreach($request as $stuff)
 	{ 
 		$tmp = explode('=', $stuff);
@@ -27,9 +27,6 @@
 	{
 		if($doc == "team")
 		{	
-
-			//$teaminfo = $teams->find();
-			//var_dump($teaminfo);
 			$query = array('name' => $data['name']);
 			$retTeam = $teams->findOne($query);	
 			//$teamInfo = ['id' => retTeam['id'], 'name' => retTeam['name'], 'division' => retTeam['division']]; 
@@ -37,17 +34,16 @@
 			echo json_encode($retTeam);
 		}
 		
-		/*else if($doc == "player")
+		else if($doc == "player")
 		{
 			$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
 			$retPlayer = $teams->findOne($query);	
-			$teamInfo = ['id' => retPlayer['id'], 'fname' => retPlayer['fname'], 'lname' => retPlayer['lname'], 'position' => retPlayer['position'], 'team' => retPlayer['team']]; 
 			header('Content-type: application/json');
-			echo json_encode($data);
+			echo json_encode($retPlayer);
 		}
 		
 		else
-			echo "you must specify a correct collection."*/
+			echo "you must specify a correct collection.";
 	}
 	
 /*	else if($method == "POST")
