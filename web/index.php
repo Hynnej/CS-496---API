@@ -77,7 +77,8 @@
 			else
 				echo "Document not saved.  Be sure you have entered league, division name and website.";
 				
-		}				
+		}
+	}	
 	
 	
 ?>
