@@ -7,11 +7,13 @@
 	$teams = $db->team;
 	$players = $db->player;
 
+	//gathers data sent
 	$method = $_SERVER['REQUEST_METHOD'];
 	$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 
 	$doc = preg_replace('/[^a-z0-9_]+/i','', array_shift($request));
 
+	//parses the strings to form keys and values
 	foreach($request as $stuff)
 	{ 
 		$tmp = explode('=', $stuff);
@@ -19,10 +21,10 @@
 		$value[] = $tmp[1];
 	}
 	
+	//combines keys and arrays into single array
 	$data = array_combine($key, $value);
-	
-	var_dump($doc);
 
+	//proccesses the get requests
 	if($method == "GET")
 	{
 		if($doc == "team")
@@ -46,7 +48,8 @@
 			echo "you must specify a correct collection.";
 	}
 	
-/*	else if($method == "POST")
+	//processes post requests
+	else if($method == "POST")
 	{
 		if($doc == "team")
 		{
