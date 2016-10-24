@@ -26,21 +26,21 @@
 	{
 		if($doc == "team")
 		{	
-			$query = array('name' => $data[$name]);
+			//$query = array('name' => 'seatthe_seahawks');
 			$retTeam = $teams->findOne($query);	
 			$teamInfo = ['id' => retTeam['id'], 'name' => retTeam['name'], 'division' => retTeam['division']]; 
 			header('Content-type: application/json');
 			echo json_encode($data);
 		}
 		
-		else if($doc == "player")
+		/*else if($doc == "player")
 		{
 			$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
 			$retPlayer = $teams->findOne($query);	
 			$teamInfo = ['id' => retPlayer['id'], 'fname' => retPlayer['fname'], 'lname' => retPlayer['lname'], 'position' => retPlayer['position'], 'team' => retPlayer['team']]; 
 			header('Content-type: application/json');
 			echo json_encode($data);
-		}
+		}*/
 		
 		else
 			echo "you must specify a correct collection."
