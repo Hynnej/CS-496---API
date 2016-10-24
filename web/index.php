@@ -29,11 +29,23 @@
 	{
 		if($doc == "team")
 		{	
-			$query = array('name' => $data['name']);
-			$retTeam = $teams->findOne($query);	
-			//$teamInfo = ['id' => retTeam['id'], 'name' => retTeam['name'], 'division' => retTeam['division']]; 
-			header('Content-type: application/json');
-			echo json_encode($retTeam);
+			if($data['name'])
+			{
+				$query = array('name' => $data['name']);
+				$retTeam = $teams->findOne($query);	
+				
+				if($retTeam)
+				{
+					header('Content-type: application/json');
+					echo json_encode($retTeam);
+				}	
+				
+				else
+					echo "No team with that name was found";
+			}
+			
+			else
+				echo "no team name was given.";
 		}
 		
 		else if($doc == "player")
