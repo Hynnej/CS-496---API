@@ -7,7 +7,7 @@
 	$db = $client->sports;
 	$teams = $db->team;
 
-	/*$method = $_SERVER['REQUEST_METHOD'];
+	$method = $_SERVER['REQUEST_METHOD'];
 	$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 	var_dump($method);
 	var_dump($request);
@@ -23,8 +23,8 @@
 	
 
 	
-	//header('Content-type: application/json');
-	echo json_encode($data);*/
+	header('Content-type: application/json');
+	echo json_encode($data);
 	/*if($method == "GET")
 	{
 		if($doc == "team")
