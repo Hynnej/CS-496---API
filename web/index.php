@@ -1,5 +1,3 @@
-
-
 <?php
 	require('../vendor/autoload.php');
 	//connects to mongodb hosted at mlabs
@@ -52,7 +50,9 @@
 			if($data['fname'] && $data['lname'])
 			{
 				$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
-				$retPlayer = $players->findOne($query);		
+				$retPlayer = $players->findOne($query);	
+				header('Content-type: application/json');
+				echo json_encode($retPlayer);;	
 				
 				if($retPlayer)
 				{
@@ -83,7 +83,7 @@
 			if($data['name'] && $data['division'])
 			{
 				$query = array('name' => $data['name']);
-				$unique = $teams->findOne($query);
+				$unique = $teams->findOne($query);	
 				
 				if($unique)		
 				{
@@ -93,8 +93,8 @@
 				else
 				{	
 					$addTeam = array(
-					'division' => $data['name'],
-					'name' => $data['division']);
+					'name' => $data['name'],
+					'division' => $data['division']);
 						
 					$teams->insertOne($addTeam);
 					echo "team was added";
@@ -102,10 +102,51 @@
 			}
 			
 			else
-				echo "Document not saved.  Be sure you have entered league, division name and website.";
+				echo "Document not saved.  Be sure you have entered team name and division.";
+				
+		}
+		
+		if($doc == "player")
+		{
+			if($data['fname'] && $data['lname'] && $data['position'] && $data['team'])
+			{
+				$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
+				$unique = $players->findOne($query);	
+				
+				if($unique)		
+				{
+					echo "The player first and last name combo must be unique. Entry not added.";
+				}
+				
+				else
+				{
+					$query = array('name' => $data['name']);
+					$retTeam = $teams->findOne($query);	
+					
+					if($retTeam)
+					{
+						$addTeam = array(
+						'fname' => $data['fname'],
+						'lname' => $data['lname'],
+						'position' => $data['position'],
+						'team' => $data['team']
+						);
+							
+						$teams->insertOne($addTeam);
+						echo "team was added";
+					}
+					
+					else
+						echo "team has not been entered yet.  Please add team first.";
+				}	
+			}
+			
+			else
+				echo "Document not saved.  Be sure you have entered player first name, last name, position and team.";
 				
 		}
 	}	
 	
 	
 ?>
+
