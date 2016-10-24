@@ -32,9 +32,9 @@
 			//var_dump($teaminfo);
 			$query = array('name' => 'seattle_seahawks');
 			$retTeam = $teams->findOne($query);	
-			$teamInfo = ['id' => retTeam['id'], 'name' => retTeam['name'], 'division' => retTeam['division']]; 
+			//$teamInfo = ['id' => retTeam['id'], 'name' => retTeam['name'], 'division' => retTeam['division']]; 
 			header('Content-type: application/json');
-			echo json_encode($teamInfo);
+			echo json_encode($retTeam);
 		}
 		
 		/*else if($doc == "player")
