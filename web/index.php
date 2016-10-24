@@ -28,7 +28,7 @@
 	{
 		if($doc == "team")
 		{	
-			$query = array('name' => $data['name']);
+			$query = array('name' => 'seattle_seahawks');
 			$retTeam = $teams->findOne($query);	
 			$teamInfo = ['id' => retTeam['id'], 'name' => retTeam['name'], 'division' => retTeam['division']]; 
 			header('Content-type: application/json');
