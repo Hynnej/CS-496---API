@@ -5,7 +5,7 @@
 	$uri = "mongodb://sirmiq:door5454@ds048319.mlab.com:48319/sports";
 	$client = new MongoDB\Client($uri);
 	$db = $client->selectDB('sports');
-	$teams = $db->team;
+	$teams = $db->selectCollection('team');
 	//$players = $db->player;
 		
 
