@@ -158,12 +158,6 @@
 				if($delTeam)
 				{
 					$teams->deleteOne($delTeam);
-					$query = array('team' => $data['name']);
-					$playTeam = $teams->find($query);
-					foreach($playTeam as $play)
-					{
-						$players->update('team' => 'none');
-					}
 					echo "team was deleted";
 				}
 				//error message if player name was not found
