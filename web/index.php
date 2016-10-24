@@ -44,11 +44,11 @@
 			$teamInfo = ['id' => retPlayer['id'], 'fname' => retPlayer['fname'], 'lname' => retPlayer['lname'], 'position' => retPlayer['position'], 'team' => retPlayer['team']]; 
 			header('Content-type: application/json');
 			echo json_encode($data);
-		}
+		}*/
 		
 		else
 			echo "you must specify a correct collection."
-	}/*
+	}
 	
 /*	else if($method == "POST")
 	{
