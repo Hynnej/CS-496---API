@@ -2,19 +2,11 @@
 	require('../vendor/autoload.php');
 	//connects to mongodb hosted at mlabs
  	
-	$uri = "mongodb://sirmiq:door5454@ds048719.mlab.com:48719/playerteams";
-	$client = new MongoDB\Client($uri);
-	$db = $client->playerteams;
-	$teams = $db->team;
-	$players = $db->player;
-	
-
 	$method = $_SERVER['REQUEST_METHOD'];
 	$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 	var_dump($method);
 	var_dump($request);
 	$doc = preg_replace('/[^a-z0-9_]+/i','', array_shift($request));
-
 	foreach($request as $stuff)
 	{ 
 		$tmp = explode('=', $stuff);
@@ -23,6 +15,12 @@
 	}
 	
 	$data = array_combine($key, $value);
+	
+	$uri = "mongodb://sirmiq:door5454@ds048719.mlab.com:48719/playerteams";
+	$client = new MongoDB\Client($uri);
+	$db = $client->playerteams;
+	$teams = $db->team;
+	$players = $db->player;
 	
 	if($method == "GET")
 	{
@@ -78,8 +76,6 @@
 				
 		}	
 	}
-	echo "hello";*/
-
-
+	*/
 ?>
 
