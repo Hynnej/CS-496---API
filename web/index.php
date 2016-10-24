@@ -1,3 +1,5 @@
+
+
 <?php
 	require('../vendor/autoload.php');
 	//connects to mongodb hosted at mlabs
@@ -120,20 +122,20 @@
 				
 				else
 				{
-					$query = array('name' => $data['name']);
+					$query = array('name' => $data['team']);
 					$retTeam = $teams->findOne($query);	
 					
 					if($retTeam)
 					{
-						$addTeam = array(
+						$addPlayer = array(
 						'fname' => $data['fname'],
 						'lname' => $data['lname'],
 						'position' => $data['position'],
 						'team' => $data['team']
 						);
 							
-						$teams->insertOne($addTeam);
-						echo "team was added";
+						$teams->insertOne($addPlayer);
+						echo "Player was added";
 					}
 					
 					else
@@ -149,4 +151,3 @@
 	
 	
 ?>
-
