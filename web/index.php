@@ -37,7 +37,7 @@
 		else if($doc == "player")
 		{
 			$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
-			$retPlayer = $teams->findOne($query);	
+			$retPlayer = $players->findOne($query);	
 			header('Content-type: application/json');
 			echo json_encode($retPlayer);
 		}
