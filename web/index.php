@@ -51,13 +51,33 @@
 	//processes post requests
 	else if($method == "POST")
 	{
-		$addTeam = array(
-		'division' => $data['name'],
-		'name' => $data['division']);
+		if($doc == "team")
+		{
+			if($data['name'] && $data['division'])
+			{
+				$query = array('name' => $data['name']);
+				$unique = $teams->findOne($query);
+				
+				if($unique)		
+				{
+					echo "The team name must be unique. Entry not added.";
+				}
+				
+				else
+				{	
+					$addTeam = array(
+					'division' => $data['name'],
+					'name' => $data['division']);
 						
-		$teams->insertOne($addTeam);
-		echo "team was added";
-	}
+					$teams->insertOne($addTeam);
+					echo "team was added";
+				}
+			}
+			
+			else
+				echo "Document not saved.  Be sure you have entered league, division name and website.";
+				
+		}				
 	
 	
 ?>
