@@ -22,7 +22,7 @@
 	
 
 	
-	header('Content-type: application/json');
+	//header('Content-type: application/json');
 	echo json_encode($data);
 	/*if($method == "GET")
 	{
