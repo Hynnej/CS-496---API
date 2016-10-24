@@ -53,7 +53,7 @@
 	{
 		if($doc == "team")
 		{
-			if($data['name'] && $data['division'])
+			/*if($data['name'] && $data['division'])
 			{
 				$query = array('name' => $data['name']);
 				$unique = $teams->findOne($query);
@@ -64,20 +64,20 @@
 				}
 				
 				else
-				{
+				{*/
 					$addTeam = array(
 						'division' => $data['name'],
 						'name' => $data['division']);
 						
 					$teams->insert($addTeam);
 					echo "team was added";
-				}
+				/*}
 			}
 			
 			else
 				echo "Document not saved.  Be sure you have entered league, division name and website.";
 				
-		}	
+		}	*/
 	}
 	
 	
