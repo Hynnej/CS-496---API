@@ -21,7 +21,7 @@
 	
 	$data = array_combine($key, $value);
 	
-
+	var_dump($doc);
 
 	if($method == "GET")
 	{
