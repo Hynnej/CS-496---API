@@ -202,9 +202,6 @@
 		
 	}			
 	
-
-	else
-		echo "method is not supported.";
 ?>
 
 
