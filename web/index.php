@@ -2,9 +2,9 @@
 	require 'vendor/autoload.php';
 
 	//connects to mongodb hosted at mlabs
-	$uri = "mongodb://sirmiq:door5454@ds048719.mlab.com:48719/playerteam";
+	$uri = "mongodb://sirmiq:door5454@ds048319.mlab.com:48319/sports";
 	$client = new MongoDB\Client($uri);
-	$db = $client->selectDB('playerteam');
+	$db = $client->selectDB('sports');
 	$teams = $db->team;
 	//$players = $db->player;
 		
