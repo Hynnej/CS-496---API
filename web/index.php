@@ -66,8 +66,6 @@
 			else
 				echo "no player name was given.";
 		}
-
-
 		
 		else
 			echo "you must specify a correct collection.";
@@ -143,17 +141,40 @@
 				echo "Document not saved.  Be sure you have entered player first name, last name, position and team.";
 				
 		}
+		
+		else
+			echo "you must specify a correct collection.";	
 	}	
 	
 	else if($method == "DELETE")
-	{
-		if($doc == "player")
+	{		
+		if($doc == "team")
+		{
+			if($data['name'])
+			{
+				$query = array('name' => $data['name']);
+				$delTeam = $teams->findOne($query);	
+				
+				if($delTeam)
+				{
+					$teams->deleteOne($delTeam);
+					echo "team was deleted";
+				}
+				//error message if player name was not found
+				else
+					echo "No team with that name was found";
+			}
+			
+			//error message if no player name was given
+			else
+				echo "no team name was given.";
+		}
+		else if($doc == "player")
 		{
 			if($data['fname'] && $data['lname'])
 			{
 				$query = array($and,'fname' => $data['fname'], 'lname' => $data['lname']);
 				$delPlayer = $players->findOne($query);	
-
 				if($delPlayer)
 				{
 					$players->deleteOne($delPlayer);
@@ -168,9 +189,13 @@
 			else
 				echo "no player name was given.";
 		}
-			
+
+		else
+			echo "you must specify a correct collection.";		
+		
 	}			
 	
 	
 ?>
+
 
