@@ -48,7 +48,7 @@
 	{
 		if($doc == "team")
 		{
-			if($nam && $div)
+			if($data['name'] && $data['division'])
 			{
 				$query = array('name' => $data['name']);
 				$unique = $teams->findOne($query);
@@ -61,10 +61,11 @@
 				else
 				{
 					$addTeam = array(
-						'division' => $div,
-						'name' => $nam);
+						'division' => $data['name'],
+						'name' => $data['division']);
 						
 					$teams->insert($addTeam);
+					echo "team was added";
 				}
 			}
 			
