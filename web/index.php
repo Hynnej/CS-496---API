@@ -35,7 +35,7 @@
 
 	}
 	//proccesses the get requests
-	/*if($method == "GET")
+	if($method == "GET")
 	{
 		if($doc == "team")
 		{	
@@ -130,7 +130,7 @@
 			echo json_encode((object)$response);
 		}
 	}
-	
+	/*
 	//processes post requests
 	else if($method == "POST")
 	{
