@@ -106,8 +106,9 @@
 					'division' => $data['division']);
 						
 					$teams->insertOne($addTeam);
+					$response = array('response' => 'team was added');
 					header('Content-type: application/json');
-					$response = array('response' : 'team was added');
+
 					echo json_encode($respone);
 					
 				}
