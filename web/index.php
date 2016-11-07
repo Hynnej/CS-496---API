@@ -1,15 +1,26 @@
 <?php
 	require('../vendor/autoload.php');
+	
 	//connects to mongodb hosted at mlabs
 	$uri = "mongodb://sirmiq:door5454@ds048719.mlab.com:48719/playerteam";
 	$client = new MongoDB\Client($uri);
 	$db = $client->playerteam;
 	$teams = $db->team;
 	$players = $db->player;
+	
 	//gathers data sent
 	$method = $_SERVER['REQUEST_METHOD'];
+	if($method == "POST")
+	{
+		 $data = json_decode(file_get_contents("php://input"));
+		 var_dump($data);
+	}	
+	
+	/*else
+	{	
 	$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 	$doc = preg_replace('/[^a-z0-9_]+/i','', array_shift($request));
+	
 	//parses the strings to form keys and values
 	foreach($request as $stuff)
 	{ 
@@ -20,6 +31,7 @@
 	
 	//combines keys and arrays into single array
 	$data = array_combine($key, $value);
+	}
 	//proccesses the get requests
 	if($method == "GET")
 	{
@@ -194,7 +206,7 @@
 		else
 			echo "you must specify a correct collection.";		
 		
-	}			
+	}*/			
 	
 ?>
 
