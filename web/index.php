@@ -12,33 +12,29 @@
 	$method = $_SERVER['REQUEST_METHOD'];
 	$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 	$doc = preg_replace('/[^a-z0-9_]+/i','', array_shift($request));
-	var_dump($request);
-	var_dump($doc);
+
 
 	if($method == "POST")
 	{
 		 $data = json_decode(file_get_contents("php://input"), true);
-		 var_dump($data);
 	}	
 	
 	else
 	{	
+		//parses the strings to form keys and values
+		foreach($request as $stuff)
+		{ 
+			$tmp = explode('=', $stuff);
+			$key[] = $tmp[0];
+			$value[] = $tmp[1];
+		}
 
+		//combines keys and arrays into single array
+		$data = array_combine($key, $value);
 
-	//parses the strings to form keys and values
-	foreach($request as $stuff)
-	{ 
-		$tmp = explode('=', $stuff);
-		$key[] = $tmp[0];
-		$value[] = $tmp[1];
-	}
-	
-	//combines keys and arrays into single array
-	$data = array_combine($key, $value);
-	var_dump($data);
 	}
 	//proccesses the get requests
-	/*if($method == "GET")
+	if($method == "GET")
 	{
 		if($doc == "team")
 		{	
@@ -211,7 +207,7 @@
 		else
 			echo "you must specify a correct collection.";		
 		
-	}*/			
+	}			
 	
 ?>
 
