@@ -106,7 +106,9 @@
 					'division' => $data['division']);
 						
 					$teams->insertOne($addTeam);
-					echo "team was added";
+					header('Content-type: application/json');
+					json_encode("team was added");
+					
 				}
 			}
 			
@@ -205,6 +207,7 @@
 		}
 
 		else
+			
 			echo "you must specify a correct collection.";		
 		
 	}			
