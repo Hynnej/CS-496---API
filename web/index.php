@@ -10,6 +10,11 @@
 	
 	//gathers data sent
 	$method = $_SERVER['REQUEST_METHOD'];
+	$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
+	$doc = preg_replace('/[^a-z0-9_]+/i','', array_shift($request));
+	var_dump($request);
+	var_dump($doc);
+
 	if($method == "POST")
 	{
 		 $data = json_decode(file_get_contents("php://input"), true);
@@ -18,8 +23,7 @@
 	
 	else
 	{	
-	$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
-	$doc = preg_replace('/[^a-z0-9_]+/i','', array_shift($request));
+
 
 	//parses the strings to form keys and values
 	foreach($request as $stuff)
