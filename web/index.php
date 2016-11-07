@@ -99,7 +99,8 @@
 			
 			foreach($roster as $member)
 			{
-				$list[] = $member['lname'];
+				$rosterMember = $member['fname'] + " " + $member['lname'] + "-" + $member['position'];
+				$list[] = $rosterMember;
 			}
 			
 			echo implode("\n", $list);
