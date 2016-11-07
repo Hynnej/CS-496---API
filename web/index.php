@@ -80,6 +80,18 @@
 				echo "no player name was given.";
 		}
 		
+		else if($doc == "teamList")
+		{
+			$teamList = $teams->find();
+			
+			foreach($teamList as $team)
+			{
+				$list[] = $team["name"];
+			}
+			
+			echo implode(" ", $list);
+		}
+		
 		else
 			echo "you must specify a correct collection.";
 	}
