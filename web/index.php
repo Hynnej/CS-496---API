@@ -92,6 +92,19 @@
 			echo implode("\n", $list);
 		}
 		
+		else if($doc == "roster")
+		{
+			$query = array('team' => $data['team']);
+			$roster = $players->find($query);
+			
+			foreach($roster as $member)
+			{
+				$list[] = $member['lname'];
+			}
+			
+			echo implode("\n", $list);
+		}
+		
 		else
 			echo "you must specify a correct collection.";
 	}
