@@ -45,12 +45,14 @@
 				
 				if($retTeam)
 				{
+					//creates response to send to client
 					header('Content-type: application/json');
 					echo json_encode($retTeam);
 				}	
 				//error message if team name was not found
 				else
 				{
+					//creates response to send to client
 					$response = array("response" => "No team with that name was found");
 					header('Content-type: application/json');
 					echo json_encode((object)$response);
@@ -60,6 +62,7 @@
 			//error message if no team name was given
 			else
 			{
+				//creates response to send to client
 				$response = array("response" => "No team name was given");
 				header('Content-type: application/json');
 				echo json_encode((object)$response);
@@ -75,12 +78,14 @@
 				
 				if($retPlayer)
 				{
+					//creates response to send to client
 					header('Content-type: application/json');
 					echo json_encode($retPlayer);
 				}	
 				//error message if player name was not found
 				else
 				{
+					//creates response to send to client
 					$response = array("response" => "No player with that name found");
 					header('Content-type: application/json');
 					echo json_encode((object)$response);
@@ -90,6 +95,7 @@
 			//error message if no player name was given
 			else
 				{
+					//creates response to send to client
 					$response = array("response" => "No player name was given");
 					header('Content-type: application/json');
 					echo json_encode((object)$response);
@@ -124,6 +130,7 @@
 		
 		else
 		{
+			//creates response to send to client
 			$response = array("response" => "You must specify a correct collection.");
 			header('Content-type: application/json');
 			echo json_encode((object)$response);
@@ -142,6 +149,7 @@
 				
 				if($unique)
 				{
+					//creates response to send to client
 					$response = array("response" => "The team name must be unique.  Entry not added.");
 					header('Content-type: application/json');
 					echo json_encode((object)$response);
@@ -154,16 +162,18 @@
 					'division' => $data['division']);
 						
 					$teams->insertOne($addTeam);
+					
+					//creates response to send to client
 					$response = array('response' => 'team was added');
 					header('Content-type: application/json');
-
-					echo json_encode($respone);
+					echo json_encode((object)$response);
 					
 				}
 			}
 			
 			else
 			{
+				//creates response to send to client
 				$response = array("response" => "Document not saved. Be sure you ahve entered a team name and division.");
 				header('Content-type: application/json');
 				echo json_encode((object)$response);
@@ -180,6 +190,7 @@
 				
 				if($unique)		
 				{
+					//creates response to send to client
 					$response = array("response" => "The team name must be unique.  Entry not added.");
 					header('Content-type: application/json');
 					echo json_encode((object)$response);
@@ -200,7 +211,8 @@
 						);
 							
 						$players->insertOne($addPlayer);
-								
+						
+						//creates response to send to client						
 						$response = array("response" => "Player added.");
 						header('Content-type: application/json');
 						echo json_encode((object)$response);
@@ -208,6 +220,7 @@
 					
 					else
 					{
+						//creates response to send to client
 						$response = array("response" => "Team has not been entered yet.  Please add team first.");
 						header('Content-type: application/json');
 						echo json_encode((object)$response);
@@ -217,6 +230,7 @@
 			
 			else
 			{
+				//creates response to send to client
 				$response = array("response" => "Document not saved.  Be sure you have entered player first name, last name, position and team.");
 				header('Content-type: application/json');
 				echo json_encode((object)$response);
@@ -225,13 +239,14 @@
 		
 		else
 		{
+			//creates response to send to client
 			$response = array("response" => "You must specify a correct collection.");
 			header('Content-type: application/json');
 			echo json_encode((object)$response);
 		}
 	}	
 	
-	/*else if($method == "DELETE")
+	else if($method == "DELETE")
 	{		
 		if($doc == "team")
 		{
@@ -243,6 +258,8 @@
 				if($delTeam)
 				{
 					$teams->deleteOne($delTeam);
+					
+					//creates response to send to client
 					response = array("response" => "Team was deleted.");
 					header('Content-type: application/json');
 					echo json_encode((object)$response);
@@ -250,6 +267,7 @@
 				//error message if player name was not found
 				else
 				{	
+					//creates response to send to client
 					$response = array("response" => "No team with that name was found.");
 					header('Content-type: application/json');
 					echo json_encode((object)$response);	
@@ -258,6 +276,7 @@
 			//error message if no player name was given
 			else
 			{	
+				//creates response to send to client
 				$response = array("response" => "No team name was given.");
 				header('Content-type: application/json');
 				echo json_encode((object)$response);	
@@ -271,7 +290,9 @@
 				$delPlayer = $players->findOne($query);	
 				if($delPlayer)
 				{
-					$players->deleteOne($delPlayer);					
+					$players->deleteOne($delPlayer);
+
+					//creates response to send to client		
 					$response = array("response" => "Player was deleted.");
 					header('Content-type: application/json');
 					echo json_encode((object)$response);	
@@ -297,12 +318,20 @@
 
 		else
 		{
+			//creates response to send to client
 			$response = array("response" => "You must specify a correct collection.");
 			header('Content-type: application/json');
 			echo json_encode((object)$response);
 		}			
-	}*/	
+	}	
 	
+	else
+	{	
+		//creates response to send to client
+		$response = array("response" => "That is not an accepted method.");
+		header('Content-type: application/json');
+		echo json_encode((object)$response);	
+	}		
 ?>
 
 
