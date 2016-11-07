@@ -89,7 +89,7 @@
 				$list[] = $team["name"];
 			}
 			
-			echo implode(" ", $list);
+			echo implode("\n", $list);
 		}
 		
 		else
