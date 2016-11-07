@@ -107,8 +107,8 @@
 						
 					$teams->insertOne($addTeam);
 					header('Content-type: application/json');
-					$response = array('response' => 'team was added');
-					json_encode($respone);
+					$response = array('response' : 'team was added');
+					echo json_encode($respone);
 					
 				}
 			}
