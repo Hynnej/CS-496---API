@@ -99,7 +99,7 @@
 			
 			foreach($roster as $member)
 			{
-				$rosterMember = $member['fname'] + " " + $member['lname'] + "-" + $member['position'];
+				$rosterMember = $member['fname'] . " " . $member['lname'] . "-" . $member['position'];
 				$list[] = $rosterMember;
 			}
 			
