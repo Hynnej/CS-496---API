@@ -130,7 +130,7 @@
 			echo json_encode((object)$response);
 		}
 	}
-	/*
+	
 	//processes post requests
 	else if($method == "POST")
 	{
@@ -231,7 +231,7 @@
 			echo json_encode((object)$response);
 		}
 	}	
-	
+	/*
 	else if($method == "DELETE")
 	{		
 		if($doc == "team")
