@@ -16,11 +16,11 @@
 		 var_dump($data);
 	}	
 	
-	/*else
+	else
 	{	
 	$request = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 	$doc = preg_replace('/[^a-z0-9_]+/i','', array_shift($request));
-	
+
 	//parses the strings to form keys and values
 	foreach($request as $stuff)
 	{ 
@@ -31,9 +31,10 @@
 	
 	//combines keys and arrays into single array
 	$data = array_combine($key, $value);
+	var_dump($data);
 	}
 	//proccesses the get requests
-	if($method == "GET")
+	/*if($method == "GET")
 	{
 		if($doc == "team")
 		{	
