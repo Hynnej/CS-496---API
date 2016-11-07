@@ -132,7 +132,7 @@
 					'division' => $data['division']);
 						
 					$teams->insertOne($addTeam);
-					$response = array('response' => 'team was added');
+					$response = array('team was added');
 					header('Content-type: application/json');
 
 					echo json_encode($respone);
