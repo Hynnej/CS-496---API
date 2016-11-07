@@ -50,12 +50,20 @@
 				}	
 				//error message if team name was not found
 				else
-					echo "No team with that name was found";
+				{
+					$response = array("response" => "No team with that name was found");
+					header('Content-type: application/json');
+					echo json_encode((object)$response);
+				}
 			}
 			
 			//error message if no team name was given
 			else
-				echo "no team name was given.";
+			{
+				$response = array("response" => "No team name was given");
+					header('Content-type: application/json');
+					echo json_encode((object)$response);
+			}
 		}
 		
 		else if($doc == "player")
@@ -72,14 +80,22 @@
 				}	
 				//error message if player name was not found
 				else
-					echo "No player with that name was found";
+				{
+					$response = array("response" => "No player with that name found");
+					header('Content-type: application/json');
+					echo json_encode((object)$response);
+				}	
 			}
 			
 			//error message if no player name was given
 			else
-				echo "no player name was given.";
+				{
+					$response = array("response" => "No player name was given");
+					header('Content-type: application/json');
+					echo json_encode((object)$response);
+				}
 		}
-		
+	
 		else if($doc == "teamList")
 		{
 			$teamList = $teams->find();
@@ -90,7 +106,7 @@
 			}
 			
 			echo implode("\n", $list);
-		}
+		}	
 		
 		else if($doc == "roster")
 		{
@@ -107,7 +123,11 @@
 		}
 		
 		else
-			echo "you must specify a correct collection.";
+		{
+			$response = array("response" => "You must specify a correct collection.");
+			header('Content-type: application/json');
+			echo json_encode((object)$response);
+		}
 	}
 	
 	//processes post requests
@@ -120,10 +140,12 @@
 				$query = array('name' => $data['name']);
 				$unique = $teams->findOne($query);	
 				
-				if($unique)		
+				if($unique)
 				{
-					echo "The team name must be unique. Entry not added.";
-				}
+					$response = array("response" => "The team name must be unique.  Entry not added.");
+					header('Content-type: application/json');
+					echo json_encode((object)$response);
+				}				
 				
 				else
 				{	
@@ -132,7 +154,7 @@
 					'division' => $data['division']);
 						
 					$teams->insertOne($addTeam);
-					$response = array('team was added');
+					$response = array('response' => 'team was added');
 					header('Content-type: application/json');
 
 					echo json_encode($respone);
@@ -141,7 +163,11 @@
 			}
 			
 			else
-				echo "Document not saved.  Be sure you have entered team name and division.";
+			{
+				$response = array("response" => "Document not saved. Be sure you ahve entered a team name and division.");
+				header('Content-type: application/json');
+				echo json_encode((object)$response);
+			}
 				
 		}
 		
@@ -154,8 +180,10 @@
 				
 				if($unique)		
 				{
-					echo "The player first and last name combo must be unique. Entry not added.";
-				}
+					$response = array("response" => "The team name must be unique.  Entry not added.");
+					header('Content-type: application/json');
+					echo json_encode((object)$response);
+				}	
 				
 				else
 				{
@@ -172,21 +200,35 @@
 						);
 							
 						$players->insertOne($addPlayer);
-						echo "Player was added";
+								
+						$response = array("response" => "Player added.");
+						header('Content-type: application/json');
+						echo json_encode((object)$response);
 					}
 					
 					else
-						echo "team has not been entered yet.  Please add team first.";
+					{
+						$response = array("response" => "Team has not been entered yet.  Please add team first.");
+						header('Content-type: application/json');
+						echo json_encode((object)$response);
+					}	
 				}	
 			}
 			
 			else
-				echo "Document not saved.  Be sure you have entered player first name, last name, position and team.";
-				
+			{
+				$response = array("response" => "Document not saved.  Be sure you have entered player first name, last name, position and team.");
+				header('Content-type: application/json');
+				echo json_encode((object)$response);
+			}					
 		}
 		
 		else
-			echo "you must specify a correct collection.";	
+		{
+			$response = array("response" => "You must specify a correct collection.");
+			header('Content-type: application/json');
+			echo json_encode((object)$response);
+		}
 	}	
 	
 	else if($method == "DELETE")
@@ -201,16 +243,25 @@
 				if($delTeam)
 				{
 					$teams->deleteOne($delTeam);
-					echo "team was deleted";
+				response = array("response" => "Team was deleted.");
+				header('Content-type: application/json');
+				echo json_encode((object)$response);
 				}
 				//error message if player name was not found
 				else
-					echo "No team with that name was found";
-			}
+				{	
+					$response = array("response" => "No team with that name was found.");
+					header('Content-type: application/json');
+					echo json_encode((object)$response);	
+				}
 			
 			//error message if no player name was given
 			else
-				echo "no team name was given.";
+			{	
+				$response = array("response" => "No team name was given.");
+				header('Content-type: application/json');
+				echo json_encode((object)$response);	
+			}	
 		}
 		else if($doc == "player")
 		{
@@ -221,22 +272,36 @@
 				if($delPlayer)
 				{
 					$players->deleteOne($delPlayer);
-					
-					echo "Player was deleted";
+					{	
+					$response = array("response" => "Player was deleted.");
+					header('Content-type: application/json');
+					echo json_encode((object)$response);	
+					}
 				}	
 				//error message if player name was not found
 				else
-					echo "No player with that name was found";
+				{	
+					$response = array("response" => "No player with that name was found.");
+					header('Content-type: application/json');
+					echo json_encode((object)$response);	
+				}	
 			}
 			
 			//error message if no player name was given
 			else
-				echo "no player name was given.";
+			{	
+				$response = array("response" => "No player name was given.");
+				header('Content-type: application/json');
+				echo json_encode((object)$response);	
+			}	
 		}
 
 		else
-			
-			echo "you must specify a correct collection.";		
+		{
+			$response = array("response" => "You must specify a correct collection.");
+			header('Content-type: application/json');
+			echo json_encode((object)$response);
+		}		
 		
 	}			
 	
