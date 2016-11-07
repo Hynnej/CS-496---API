@@ -246,7 +246,7 @@
 		}
 	}	
 	
-	else if($method == "DELETE")
+	/*else if($method == "DELETE")
 	{		
 		if($doc == "team")
 		{
@@ -331,7 +331,7 @@
 		$response = array("response" => "That is not an accepted method.");
 		header('Content-type: application/json');
 		echo json_encode((object)$response);	
-	}		
+	}*/		
 ?>
 
 
