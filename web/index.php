@@ -16,8 +16,7 @@
 
 	if($method == "POST")
 	{
-		$data = json_decode(file_get_contents("php://input"), true);
-		var_dump($data);
+		 $data = json_decode(file_get_contents("php://input"), true);
 	}	
 	
 	else
@@ -62,8 +61,8 @@
 			else
 			{
 				$response = array("response" => "No team name was given");
-					header('Content-type: application/json');
-					echo json_encode((object)$response);
+				header('Content-type: application/json');
+				echo json_encode((object)$response);
 			}
 		}
 		
@@ -231,7 +230,7 @@
 			echo json_encode((object)$response);
 		}
 	}	
-	/*
+	
 	else if($method == "DELETE")
 	{		
 		if($doc == "team")
@@ -244,9 +243,9 @@
 				if($delTeam)
 				{
 					$teams->deleteOne($delTeam);
-				response = array("response" => "Team was deleted.");
-				header('Content-type: application/json');
-				echo json_encode((object)$response);
+					response = array("response" => "Team was deleted.");
+					header('Content-type: application/json');
+					echo json_encode((object)$response);
 				}
 				//error message if player name was not found
 				else
@@ -255,7 +254,7 @@
 					header('Content-type: application/json');
 					echo json_encode((object)$response);	
 				}
-			
+			}
 			//error message if no player name was given
 			else
 			{	
@@ -272,12 +271,11 @@
 				$delPlayer = $players->findOne($query);	
 				if($delPlayer)
 				{
-					$players->deleteOne($delPlayer);
-					{	
+					$players->deleteOne($delPlayer);					
 					$response = array("response" => "Player was deleted.");
 					header('Content-type: application/json');
 					echo json_encode((object)$response);	
-					}
+					
 				}	
 				//error message if player name was not found
 				else
@@ -302,9 +300,8 @@
 			$response = array("response" => "You must specify a correct collection.");
 			header('Content-type: application/json');
 			echo json_encode((object)$response);
-		}		
-		
-	}*/			
+		}			
+	}	
 	
 ?>
 
