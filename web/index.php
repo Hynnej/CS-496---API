@@ -231,7 +231,7 @@
 		}
 	}	
 	
-	else if($method == "DELETE")
+	/*else if($method == "DELETE")
 	{		
 		if($doc == "team")
 		{
@@ -301,7 +301,7 @@
 			header('Content-type: application/json');
 			echo json_encode((object)$response);
 		}			
-	}	
+	}*/	
 	
 ?>
 
